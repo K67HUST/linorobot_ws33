@@ -1,0 +1,70 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
+{
+    "configurations": [
+        {
+            "name": "PlatformIO",
+            "includePath": [
+                "/home/hieu/linorobot_ws/src/linorobot/teensy/firmware/src",
+                "/home/hieu/linorobot_ws/src/linorobot/teensy/firmware/lib/config",
+                "/home/hieu/linorobot_ws/src/linorobot/teensy/firmware/lib/pid",
+                "/home/hieu/linorobot_ws/src/linorobot/teensy/firmware/lib/motor",
+                "/home/hieu/linorobot_ws/src/linorobot/teensy/firmware/lib/kinematics",
+                "/home/hieu/linorobot_ws/src/linorobot/teensy/firmware/lib/imu",
+                "/home/hieu/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                "/home/hieu/linorobot_ws/src/linorobot/teensy/firmware/lib/ros_lib",
+                "/home/hieu/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                "/home/hieu/linorobot_ws/src/linorobot/teensy/firmware/lib/encoder",
+                "/home/hieu/linorobot_ws/src/linorobot/teensy/firmware/lib/encoder/utility",
+                "/home/hieu/.platformio/packages/framework-arduino-avr/cores/arduino",
+                "/home/hieu/.platformio/packages/framework-arduino-avr/variants/mega",
+                "/home/hieu/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                "/home/hieu/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                "/home/hieu/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                ""
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "/home/hieu/linorobot_ws/src/linorobot/teensy/firmware/src",
+                    "/home/hieu/linorobot_ws/src/linorobot/teensy/firmware/lib/config",
+                    "/home/hieu/linorobot_ws/src/linorobot/teensy/firmware/lib/pid",
+                    "/home/hieu/linorobot_ws/src/linorobot/teensy/firmware/lib/motor",
+                    "/home/hieu/linorobot_ws/src/linorobot/teensy/firmware/lib/kinematics",
+                    "/home/hieu/linorobot_ws/src/linorobot/teensy/firmware/lib/imu",
+                    "/home/hieu/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                    "/home/hieu/linorobot_ws/src/linorobot/teensy/firmware/lib/ros_lib",
+                    "/home/hieu/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                    "/home/hieu/linorobot_ws/src/linorobot/teensy/firmware/lib/encoder",
+                    "/home/hieu/linorobot_ws/src/linorobot/teensy/firmware/lib/encoder/utility",
+                    "/home/hieu/.platformio/packages/framework-arduino-avr/cores/arduino",
+                    "/home/hieu/.platformio/packages/framework-arduino-avr/variants/mega",
+                    "/home/hieu/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                    "/home/hieu/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                    "/home/hieu/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                    ""
+                ]
+            },
+            "defines": [
+                "PLATFORMIO=60118",
+                "ARDUINO_AVR_MEGA2560",
+                "F_CPU=16000000L",
+                "ARDUINO_ARCH_AVR",
+                "ARDUINO=10808",
+                "__AVR_ATmega2560__",
+                ""
+            ],
+            "cStandard": "gnu11",
+            "cppStandard": "gnu++11",
+            "compilerPath": "/home/hieu/.platformio/packages/toolchain-atmelavr/bin/avr-gcc",
+            "compilerArgs": [
+                "-mmcu=atmega2560",
+                ""
+            ]
+        }
+    ],
+    "version": 4
+}

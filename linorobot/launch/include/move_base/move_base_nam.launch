@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Arguments -->
+  <arg name="move_forward_only" default="false"/>
+  <!-- <arg name="cmd_vel_topic" default="/cmd_vel" />
+  <arg name="odom_topic" default="odom" /> -->
+  <arg name="global_planner" default="d_star" />
+
+  <!-- move_base -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+
+  <!-- global planner plugin -->
+    <!-- graph search -->
+    <param name="base_global_planner" value="graph_planner/GraphPlanner"
+      if="$(eval arg('global_planner')=='a_star'
+              or arg('global_planner')=='jps' 
+              or arg('global_planner')=='gbfs'
+              or arg('global_planner')=='dijkstra'
+              or arg('global_planner')=='d_star'
+              or arg('global_planner')=='lpa_star'
+              or arg('global_planner')=='voronoi'
+              or arg('global_planner')=='d_star_lite'
+              or arg('global_planner')=='theta_star'
+              or arg('global_planner')=='lazy_theta_star'
+              or arg('global_planner')=='s_theta_star'
+              or arg('global_planner')=='hybrid_a_star'
+          )" />
+    <param name="GraphPlanner/planner_name" value="$(arg global_planner)"
+      if="$(eval arg('global_planner')=='a_star'
+              or arg('global_planner')=='jps' 
+              or arg('global_planner')=='gbfs'
+              or arg('global_planner')=='dijkstra'
+              or arg('global_planner')=='d_star'
+              or arg('global_planner')=='lpa_star'
+              or arg('global_planner')=='voronoi'
+              or arg('global_planner')=='d_star_lite'
+              or arg('global_planner')=='theta_star'
+              or arg('global_planner')=='lazy_theta_star'
+              or arg('global_planner')=='s_theta_star'
+              or arg('global_planner')=='hybrid_a_star'
+          )" />
+    <rosparam file="$(find linorobot)/param/navigation/nam_param/graph_planner_params.yaml" command="load"
+      if="$(eval arg('global_planner')=='a_star'
+              or arg('global_planner')=='jps' 
+              or arg('global_planner')=='gbfs'
+              or arg('global_planner')=='dijkstra'
+              or arg('global_planner')=='d_star'
+              or arg('global_planner')=='lpa_star'
+              or arg('global_planner')=='voronoi'
+              or arg('global_planner')=='d_star_lite'
+              or arg('global_planner')=='theta_star'
+              or arg('global_planner')=='lazy_theta_star'
+              or arg('global_planner')=='s_theta_star'
+              or arg('global_planner')=='hybrid_a_star'
+          )" />
+
+    <!-- sample search -->
+    <param name="base_global_planner" value="sample_planner/SamplePlanner"
+      if="$(eval arg('global_planner')=='rrt'
+              or arg('global_planner')=='rrt_astar'
+              or arg('global_planner')=='rrt_cut'
+              or arg('global_planner')=='rrt_star'
+              or arg('global_planner')=='informed_rrt'
+              or arg('global_planner')=='quick_informed_rrt'
+              or arg('global_planner')=='rrt_connect')" />
+    <param name="SamplePlanner/planner_name" value="$(arg global_planner)"
+      if="$(eval arg('global_planner')=='rrt'
+              or arg('global_planner')=='rrt_astar'
+              or arg('global_planner')=='rrt_cut'
+              or arg('global_planner')=='rrt_star'
+              or arg('global_planner')=='informed_rrt'
+              or arg('global_planner')=='quick_informed_rrt'
+              or arg('global_planner')=='rrt_connect')" />
+    <rosparam file="$(find linorobot)/param/navigation/nam_param/sample_planner_params.yaml" command="load"
+      if="$(eval arg('global_planner')=='rrt'
+              or arg('global_planner')=='rrt_astar'
+              or arg('global_planner')=='rrt_cut'
+              or arg('global_planner')=='rrt_star'
+              or arg('global_planner')=='informed_rrt'
+              or arg('global_planner')=='quick_informed_rrt'
+              or arg('global_planner')=='rrt_connect')" />
+
+    <!-- evolutionary search -->
+    <param name="base_global_planner" value="evolutionary_planner/EvolutionaryPlanner"
+      if="$(eval arg('global_planner')=='aco'
+              or arg('global_planner')=='pso'
+              or arg('global_planner')=='ga')" />
+    <param name="EvolutionaryPlanner/planner_name" value="$(arg global_planner)"
+      if="$(eval arg('global_planner')=='aco'
+              or arg('global_planner')=='pso'
+              or arg('global_planner')=='ga')" />
+    <rosparam file="$(find linorobot)/param/navigation/nam_param/evolutionary_planner_params.yaml" command="load"
+      if="$(eval arg('global_planner')=='aco'
+              or arg('global_planner')=='pso'
+              or arg('global_planner')=='ga')" />
+
+    <!-- lazy -->
+    <param name="base_global_planner" value="lazy_planner/LazyPlanner" if="$(eval arg('global_planner')=='lazy')" />
+
+
+  <!--OG -->
+  <!-- local planner plugin -->
+    <param name="base_local_planner" value="dwa_planner/DWAPlanner" />
+    <!-- <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" /> -->
+    <rosparam file="$(find linorobot)/param/navigation/nam_param/dwa_local_planner_params.yaml" command="load" />
+
+  <!-- loading navigation parameters -->
+    <rosparam file="$(find linorobot)/param/navigation/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find linorobot)/param/navigation/costmap_common_params.yaml" command="load" ns="local_costmap" />
+
+    <rosparam file="$(find linorobot)/param/navigation/nam_param/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find linorobot)/param/navigation/nam_param/local_costmap_plugins.yaml" command="load" />
+
+    <rosparam file="$(find linorobot)/param/navigation/nam_param/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find linorobot)/param/navigation/nam_param/global_costmap_plugins.yaml" command="load" />
+
+    <rosparam file="$(find linorobot)/param/navigation/nam_param/move_base_params.yaml" command="load" />
+<!-- 
+    <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
+    <remap from="odom" to="$(arg odom_topic)"/> -->
+    <param name="DWAPlannerROS/min_vel_x" value="0.0" if="$(arg move_forward_only)" />
+  </node>
+</launch>
+
